@@ -1,0 +1,17 @@
+{
+  "navigation": [
+    { "title": "Start", "url": "/" },
+    { "title": "Der Verein", "url": "/der-verein" },
+    { "title": "Wegbeschreibung", "url": "/wegbeschreibung" },
+    { "title": "Kontakt", "url": "/kontakt" },
+    { "title": "Impressum", "url": "/impressum" },
+    { "title": "Datenschutz", "url": "/datenschutz" }
+  ],
+  "company": {
+    "name": "Auf Brüderstein e.V.",
+    "url": "https://bruederstein.de",
+    "email": "info@bruederstein.de"
+  },
+  "memberships": [],
+  "social": []
+}

@@ -1,0 +1,122 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: "class",
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // Light mode colors - Green theme
+        primary: {
+          DEFAULT: "#16a34a", // green-600
+          50: "#f0fdf4",
+          100: "#dcfce7",
+          200: "#bbf7d0",
+          300: "#86efac",
+          400: "#4ade80",
+          500: "#22c55e",
+          600: "#16a34a",
+          700: "#15803d",
+          800: "#166534",
+          900: "#14532d",
+          950: "#052e16",
+        },
+        secondary: {
+          DEFAULT: "#454545",
+          50: "#f8f9fa",
+          100: "#ffffff",
+          200: "#e7e7e7",
+          300: "#4b4b4b",
+          400: "#454545",
+          500: "#8d3f57",
+          600: "#74b6ed",
+          700: "#1a1a1a",
+          800: "#1e1e1e",
+          900: "#1a1a1a",
+          950: "#1a1a1a",
+        },
+        accent: {
+          DEFAULT: "#74b6ed",
+          50: "#f8f9fa",
+          100: "#ffffff",
+          200: "#e7e7e7",
+          300: "#4b4b4b",
+          400: "#454545",
+          500: "#8d3f57",
+          600: "#74b6ed",
+          700: "#1a1a1a",
+          800: "#1e1e1e",
+          900: "#1a1a1a",
+          950: "#1a1a1a",
+        },
+        // Dark mode colors - Green theme
+        "dark-primary": {
+          DEFAULT: "#22c55e", // green-500
+          50: "#052e16",
+          100: "#14532d",
+          200: "#166534",
+          300: "#15803d",
+          400: "#16a34a",
+          500: "#22c55e",
+          600: "#4ade80",
+          700: "#86efac",
+          800: "#bbf7d0",
+          900: "#dcfce7",
+          950: "#f0fdf4",
+        },
+        "dark-secondary": {
+          DEFAULT: "#f8f9fa",
+          50: "#1e1e1e",
+          100: "#1a1a1a",
+          200: "#1a1a1a",
+          300: "#f8f9fa",
+          400: "#f8f9fa",
+          500: "#8d3f57",
+          600: "#74b6ed",
+          700: "#ffffff",
+          800: "#ffffff",
+          900: "#ffffff",
+          950: "#ffffff",
+        },
+        "dark-accent": {
+          DEFAULT: "#74b6ed",
+          50: "#1e1e1e",
+          100: "#1a1a1a",
+          200: "#1a1a1a",
+          300: "#f8f9fa",
+          400: "#f8f9fa",
+          500: "#8d3f57",
+          600: "#74b6ed",
+          700: "#ffffff",
+          800: "#ffffff",
+          900: "#ffffff",
+          950: "#ffffff",
+        },
+        // Background colors
+        background: {
+          DEFAULT: "#f8f9fa",
+          dark: "#1e1e1e",
+        },
+        "background-secondary": {
+          DEFAULT: "#ffffff",
+          dark: "#1a1a1a",
+        },
+        // Content colors
+        content: {
+          DEFAULT: "#1a1a1a",
+          dark: "#ffffff",
+        },
+      },
+      fontFamily: {
+        sans: ["Inter var", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
+};

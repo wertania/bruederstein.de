@@ -1,0 +1,16 @@
+{
+  "logoPathLight": "/images/Logo-Bruederstein.png",
+  "logoPathDark": "/images/Logo-Bruederstein.png",
+  "logoAlt": "Auf Brüderstein e.V. Logo",
+  "logoUrl": "/",
+  "menuItems": [
+    { "text": "Start", "url": "/" },
+    { "text": "Der Verein", "url": "/der-verein" },
+    { "text": "Wegbeschreibung", "url": "/wegbeschreibung" },
+    { "text": "Kontakt", "url": "/kontakt" }
+  ],
+  "highlight": {
+    "text": "Mietanfrage",
+    "url": "/kontakt"
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "title": "Pruefschema Beratungsbefugnis",
+  "notes": {
+    "1": "Die Prüfung der Einnahmen und Einkünfte erfolgt für ein Veranlagungsjahr.",
+    "2": "Bei zusammenveranlagten Personen ist die Prüfung für beide gemeinsam vorzunehmen."
+  },
+  "start": {
+    "question": "Sind Sie bereits Mitglied bei uns?",
+    "info": "Keine Sorge: Falls Sie noch kein Mitglied sind, können Sie dies im nächsten Schritt nachholen.",
+    "yes": {
+      "question": "Haben Sie Einkommen aus einem Arbeitsverhältnis, Rente, Pension oder Unterhalt erhalten?",
+      "info": "Falls Sie arbeitslos sind oder in Ausbildung, wählen Sie bitte 'Nein'.",
+      "yes": {
+        "question": "Haben Sie im letzten Jahr zusätzliche Einnahmen erzielt, die umsatzsteuerpflichtig waren?",
+        "info": "Zum Beispiel: Mieteinnahmen, Kapitalerträge, Nebenverdienste",
+        "no": {
+          "result": "Wir können Sie beraten!",
+          "reason": "Sie erfüllen alle Voraussetzungen für eine Beratung bei der Einkommensteuer und verwandten Angelegenheiten."
+        },
+        "yes": {
+          "question": "Betreiben Sie ein Gewerbe, sind Sie selbstständig oder haben Sie einen landwirtschaftlichen Betrieb?",
+          "info": "Dies betrifft Einkünfte aus gewerblicher Tätigkeit, freiberuflicher Tätigkeit oder Land- und Forstwirtschaft.",
+          "no": {
+            "question": "Sind Ihre zusätzlichen Einnahmen vollständig steuerfrei?",
+            "info": "Zum Beispiel: Übungsleiterpauschale, Ehrenamtspauschale, bestimmte steuerfreie Zuschüsse",
+            "yes": {
+              "question": "Haben Sie noch weitere Einkünfte, die Sie in der Steuererklärung angeben müssen?",
+              "info": "Zum Beispiel: weitere Mieteinnahmen, Kapitalerträge über den Freibetrag",
+              "no": {
+                "result": "Wir können Sie beraten!",
+                "reason": "Ihre steuerfreien Einnahmen stehen einer Beratung nicht entgegen. Sie erfüllen alle Voraussetzungen."
+              },
+              "yes": {
+                "question": "Liegen Ihre gesamten zusätzlichen Einnahmen unter 18.000 € (bzw. 36.000 € bei Zusammenveranlagung)?",
+                "info": "Bitte rechnen Sie alle weiteren Einnahmen zusammen.",
+                "yes": {
+                  "result": "Wir können Sie beraten!",
+                  "reason": "Ihre zusätzlichen Einnahmen liegen innerhalb der zulässigen Grenze. Sie erfüllen alle Voraussetzungen für eine Beratung."
+                },
+                "no": {
+                  "result": "Leider können wir Sie nicht beraten",
+                  "reason": "Ihre zusätzlichen Einnahmen überschreiten die Grenze von 18.000 € (bzw. 36.000 € bei Zusammenveranlagung). In diesem Fall benötigen Sie die Unterstützung eines Steuerberaters oder Rechtsanwalts."
+                }
+              }
+            },
+            "no": {
+              "result": "Leider können wir Sie nicht beraten",
+              "reason": "Ihre zusätzlichen Einnahmen sind nicht vollständig steuerfrei. In diesem Fall ist die Situation zu komplex für unsere Beratung und Sie benötigen einen Steuerberater oder Rechtsanwalt."
+            }
+          },
+          "yes": {
+            "question": "Sind Ihre Einnahmen aus der selbstständigen Tätigkeit vollständig steuerfrei?",
+            "info": "Zum Beispiel: Übungsleiterpauschale, Ehrenamtspauschale",
+            "yes": {
+              "question": "Haben Sie noch weitere Einkünfte außerhalb Ihrer selbstständigen Tätigkeit?",
+              "info": "Zum Beispiel: Mieteinnahmen, Kapitalerträge",
+              "no": {
+                "result": "Wir können Sie beraten!",
+                "reason": "Ihre steuerfreien Einnahmen aus selbstständiger Tätigkeit stehen einer Beratung nicht entgegen."
+              },
+              "yes": {
+                "question": "Liegen Ihre gesamten zusätzlichen Einnahmen unter 18.000 € (bzw. 36.000 € bei Zusammenveranlagung)?",
+                "info": "Bitte rechnen Sie alle weiteren Einnahmen zusammen.",
+                "yes": {
+                  "result": "Wir können Sie beraten!",
+                  "reason": "Ihre zusätzlichen Einnahmen liegen innerhalb der zulässigen Grenze. Sie erfüllen alle Voraussetzungen."
+                },
+                "no": {
+                  "result": "Leider können wir Sie nicht beraten",
+                  "reason": "Ihre zusätzlichen Einnahmen überschreiten die Grenze von 18.000 € (bzw. 36.000 € bei Zusammenveranlagung). Für diese Einkommenskonstellation benötigen Sie einen Steuerberater."
+                }
+              }
+            },
+            "no": {
+              "result": "Leider können wir Sie nicht beraten",
+              "reason": "Bei steuerpflichtigen Einkünften aus Gewerbebetrieb, selbstständiger Arbeit oder Land- und Forstwirtschaft dürfen wir keine Beratung anbieten. Sie benötigen hierfür einen Steuerberater oder Rechtsanwalt."
+            }
+          }
+        }
+      },
+      "no": {
+        "result": "Leider können wir Sie nicht beraten",
+        "reason": "Ohne Einkünfte aus Arbeitslohn, Rente, Pension oder Unterhalt (und wenn Sie nicht arbeitslos oder in Ausbildung sind) können wir keine Beratung anbieten. Bitte wenden Sie sich an einen Steuerberater."
+      }
+    },
+    "no": {
+      "question": "Haben Sie Einkommen aus einem Arbeitsverhältnis, Rente, Pension oder Unterhalt erhalten?",
+      "info": "Falls Sie arbeitslos sind oder in Ausbildung, wählen Sie bitte 'Nein'.",
+      "requiresMembership": true,
+      "yes": {
+        "question": "Haben Sie im letzten Jahr zusätzliche Einnahmen erzielt, die umsatzsteuerpflichtig waren?",
+        "info": "Zum Beispiel: Mieteinnahmen, Kapitalerträge, Nebenverdienste",
+        "requiresMembership": true,
+        "no": {
+          "result": "Wir können Sie beraten!",
+          "reason": "Sie erfüllen alle Voraussetzungen für eine Beratung. Wichtig: Sie müssen zunächst Mitglied werden, um unsere Beratungsleistung in Anspruch zu nehmen.",
+          "requiresMembership": true
+        },
+        "yes": {
+          "question": "Betreiben Sie ein Gewerbe, sind Sie selbstständig oder haben Sie einen landwirtschaftlichen Betrieb?",
+          "info": "Dies betrifft Einkünfte aus gewerblicher Tätigkeit, freiberuflicher Tätigkeit oder Land- und Forstwirtschaft.",
+          "requiresMembership": true,
+          "no": {
+            "question": "Sind Ihre zusätzlichen Einnahmen vollständig steuerfrei?",
+            "info": "Zum Beispiel: Übungsleiterpauschale, Ehrenamtspauschale, bestimmte steuerfreie Zuschüsse",
+            "requiresMembership": true,
+            "yes": {
+              "question": "Haben Sie noch weitere Einkünfte, die Sie in der Steuererklärung angeben müssen?",
+              "info": "Zum Beispiel: weitere Mieteinnahmen, Kapitalerträge über den Freibetrag",
+              "requiresMembership": true,
+              "no": {
+                "result": "Wir können Sie beraten!",
+                "reason": "Ihre steuerfreien Einnahmen stehen einer Beratung nicht entgegen. Sie erfüllen alle Voraussetzungen. Wichtig: Sie müssen zunächst Mitglied werden, um unsere Beratungsleistung in Anspruch zu nehmen.",
+                "requiresMembership": true
+              },
+              "yes": {
+                "question": "Liegen Ihre gesamten zusätzlichen Einnahmen unter 18.000 € (bzw. 36.000 € bei Zusammenveranlagung)?",
+                "info": "Bitte rechnen Sie alle weiteren Einnahmen zusammen.",
+                "requiresMembership": true,
+                "yes": {
+                  "result": "Wir können Sie beraten!",
+                  "reason": "Ihre zusätzlichen Einnahmen liegen innerhalb der zulässigen Grenze. Sie erfüllen alle Voraussetzungen. Wichtig: Sie müssen zunächst Mitglied werden, um unsere Beratungsleistung in Anspruch zu nehmen.",
+                  "requiresMembership": true
+                },
+                "no": {
+                  "result": "Leider können wir Sie nicht beraten",
+                  "reason": "Ihre zusätzlichen Einnahmen überschreiten die Grenze von 18.000 € (bzw. 36.000 € bei Zusammenveranlagung). In diesem Fall benötigen Sie die Unterstützung eines Steuerberaters oder Rechtsanwalts."
+                }
+              }
+            },
+            "no": {
+              "result": "Leider können wir Sie nicht beraten",
+              "reason": "Ihre zusätzlichen Einnahmen sind nicht vollständig steuerfrei. In diesem Fall ist die Situation zu komplex für unsere Beratung und Sie benötigen einen Steuerberater oder Rechtsanwalt."
+            }
+          },
+          "yes": {
+            "question": "Sind Ihre Einnahmen aus der selbstständigen Tätigkeit vollständig steuerfrei?",
+            "info": "Zum Beispiel: Übungsleiterpauschale, Ehrenamtspauschale",
+            "requiresMembership": true,
+            "yes": {
+              "question": "Haben Sie noch weitere Einkünfte außerhalb Ihrer selbstständigen Tätigkeit?",
+              "info": "Zum Beispiel: Mieteinnahmen, Kapitalerträge",
+              "requiresMembership": true,
+              "no": {
+                "result": "Wir können Sie beraten!",
+                "reason": "Ihre steuerfreien Einnahmen aus selbstständiger Tätigkeit stehen einer Beratung nicht entgegen. Wichtig: Sie müssen zunächst Mitglied werden, um unsere Beratungsleistung in Anspruch zu nehmen.",
+                "requiresMembership": true
+              },
+              "yes": {
+                "question": "Liegen Ihre gesamten zusätzlichen Einnahmen unter 18.000 € (bzw. 36.000 € bei Zusammenveranlagung)?",
+                "info": "Bitte rechnen Sie alle weiteren Einnahmen zusammen.",
+                "requiresMembership": true,
+                "yes": {
+                  "result": "Wir können Sie beraten!",
+                  "reason": "Ihre zusätzlichen Einnahmen liegen innerhalb der zulässigen Grenze. Sie erfüllen alle Voraussetzungen. Wichtig: Sie müssen zunächst Mitglied werden, um unsere Beratungsleistung in Anspruch zu nehmen.",
+                  "requiresMembership": true
+                },
+                "no": {
+                  "result": "Leider können wir Sie nicht beraten",
+                  "reason": "Ihre zusätzlichen Einnahmen überschreiten die Grenze von 18.000 € (bzw. 36.000 € bei Zusammenveranlagung). Für diese Einkommenskonstellation benötigen Sie einen Steuerberater."
+                }
+              }
+            },
+            "no": {
+              "result": "Leider können wir Sie nicht beraten",
+              "reason": "Bei steuerpflichtigen Einkünften aus Gewerbebetrieb, selbstständiger Arbeit oder Land- und Forstwirtschaft dürfen wir keine Beratung anbieten. Sie benötigen hierfür einen Steuerberater oder Rechtsanwalt."
+            }
+          }
+        }
+      },
+      "no": {
+        "result": "Leider können wir Sie nicht beraten",
+        "reason": "Ohne Einkünfte aus Arbeitslohn, Rente, Pension oder Unterhalt (und wenn Sie nicht arbeitslos oder in Ausbildung sind) können wir keine Beratung anbieten. Bitte wenden Sie sich an einen Steuerberater."
+      }
+    }
+  },
+  "advisory_scope": {
+    "includes": [
+      "Einkommensteuer",
+      "Zuschlagsteuern",
+      "Kindergeld nach dem ESIG",
+      "Arbeitgeberaufgaben im Zusammenhang mit haushaltsnahen Dienstleistungen und Kinderbetreuungskosten",
+      "Feststellungsverfahren, sofern Beratungsbefugnis für alle Beteiligten besteht",
+      "Nebentätigkeiten nach § 5 Abs. 1 RDG"
+    ],
+    "exceptions": [
+      "Umsätze aus einkommensteuerfreien Einnahmen nach § 3 Nr. 12, 26–26b, 72 ESIG"
+    ]
+  }
+}
+
