@@ -1,31 +1,20 @@
-# Build stage
-FROM oven/bun:latest AS builder
+# Builds the static site and serves it with nginx.
+# Nothing runs at request time: the image contains static files only.
+# Bun installs the packages; the Nuxt build itself runs on Node.
+FROM node:24-alpine AS builder
+COPY --from=oven/bun:1-alpine /usr/local/bin/bun /usr/local/bin/bun
 WORKDIR /app
 
-# Install Python and build tools for native modules
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
 COPY . .
-RUN bun install && bun run build
+RUN bun run generate
 
-# Production stage
-FROM nginx:alpine
-
-# Remove default nginx static assets
+FROM nginx:stable-alpine
 RUN rm -rf /usr/share/nginx/html/*
-
-# Copy built static files from builder
-COPY --from=builder /app/.output/public /usr/share/nginx/html
-
-# Set recommended nginx configuration for production static serving
 COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80
+COPY security-headers.conf /etc/nginx/security-headers.conf
+COPY --from=builder /app/.output/public /usr/share/nginx/html
 EXPOSE 80
-
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]

@@ -11,7 +11,7 @@
       </div>
     </section>
 
-    <main class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
+    <div class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
       <section class="space-y-8 text-gray-700 dark:text-gray-300 leading-relaxed">
         <div class="space-y-6">
           <div>
@@ -78,19 +78,15 @@
           </div>
         </div>
       </section>
-    </main>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
+usePageSeo({
   title: "Kontakt & Mietanfrage – Auf Brüderstein e.V.",
-  meta: [
-    {
-      name: "description",
-      content: "Kontaktieren Sie uns für eine Mietanfrage des Grillplatzes. Miete: 25€ pro Tag, nur für Bürger der Gemeinde Hohenstein.",
-    },
-  ],
-  link: [{ rel: "canonical", href: "https://bruederstein.de/kontakt" }],
+  description:
+    "Kontaktieren Sie uns für eine Mietanfrage des Grillplatzes. Miete: 25€ pro Tag, nur für Bürger der Gemeinde Hohenstein.",
+  path: "/kontakt",
 });
 </script>

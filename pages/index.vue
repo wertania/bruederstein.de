@@ -133,26 +133,10 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
+usePageSeo({
   title: "Auf Brüderstein e.V. – Grillplatz für die Gemeinde Hohenstein",
-  meta: [
-    {
-      name: "description",
-      content: "Der Verein Auf Brüderstein e.V. verwaltet den Grillplatz für die Gemeinde Hohenstein. Mieten Sie den Grillplatz für Ihre Veranstaltung.",
-    },
-    {
-      property: "og:title",
-      content: "Auf Brüderstein e.V. – Grillplatz für die Gemeinde Hohenstein",
-    },
-    {
-      property: "og:description",
-      content: "Der Verein Auf Brüderstein e.V. verwaltet den Grillplatz für die Gemeinde Hohenstein.",
-    },
-    {
-      property: "og:type",
-      content: "website",
-    },
-  ],
-  link: [{ rel: "canonical", href: "https://bruederstein.de/" }],
+  description:
+    "Der Verein Auf Brüderstein e.V. verwaltet den Grillplatz für die Gemeinde Hohenstein. Mieten Sie den Grillplatz für Ihre Veranstaltung.",
+  path: "/",
 });
 </script>

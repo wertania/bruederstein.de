@@ -1,7 +1,6 @@
 <script setup>
 // Import the menu configuration from the content directory
 import menuConfig from "~/content/_menu.json";
-import { ref, onMounted, onUnmounted } from "vue";
 
 // State for mobile menu toggle
 const menuOpen = ref(false);
@@ -31,7 +30,6 @@ function handleClickOutside(event) {
 
 // Function to toggle dark mode
 function toggleDarkMode() {
-  console.log("toggleDarkMode");
   if (typeof document !== "undefined") {
     document.body.classList.toggle("dark");
     isDarkMode.value = document.body.classList.contains("dark");
@@ -86,7 +84,7 @@ onUnmounted(() => {
           <!-- Logo -->
           <img
             :src="menuConfig.logoPathLight || '/logo.png'"
-            :alt="menuConfig.logoAlt || 'CUCO Logo'"
+            :alt="menuConfig.logoAlt || 'Logo'"
             class="h-20 sm:h-24 py-1"
           />
         </a>

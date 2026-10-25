@@ -11,7 +11,7 @@
       </div>
     </section>
 
-    <main class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
+    <div class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
       <section class="space-y-8 text-gray-700 dark:text-gray-300 leading-relaxed">
         <div class="space-y-2">
           <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
@@ -222,19 +222,15 @@
           </p>
         </div>
       </section>
-    </main>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
+usePageSeo({
   title: "Datenschutz – Auf Brüderstein e.V.",
-  meta: [
-    {
-      name: "description",
-      content: "Datenschutzerklärung gemäß DSGVO von Auf Brüderstein e.V.",
-    },
-  ],
-  link: [{ rel: "canonical", href: "https://bruederstein.de/datenschutz" }],
+  description:
+    "Datenschutzerklärung gemäß DSGVO von Auf Brüderstein e.V.",
+  path: "/datenschutz",
 });
 </script>

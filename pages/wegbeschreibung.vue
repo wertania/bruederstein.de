@@ -11,7 +11,7 @@
       </div>
     </section>
 
-    <main class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
+    <div class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
       <section class="space-y-8 text-gray-700 dark:text-gray-300 leading-relaxed">
         <div class="space-y-4">
           <p class="text-lg">
@@ -45,19 +45,15 @@
           </div>
         </div>
       </section>
-    </main>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
+usePageSeo({
   title: "Wegbeschreibung – Auf Brüderstein e.V.",
-  meta: [
-    {
-      name: "description",
-      content: "Wegbeschreibung zum Grillplatz Auf Brüderstein zwischen Strinz-Margarethä und Breithardt.",
-    },
-  ],
-  link: [{ rel: "canonical", href: "https://bruederstein.de/wegbeschreibung" }],
+  description:
+    "Wegbeschreibung zum Grillplatz Auf Brüderstein zwischen Strinz-Margarethä und Breithardt.",
+  path: "/wegbeschreibung",
 });
 </script>

@@ -1,6 +1,6 @@
 ## Colors
 
-Primary:#00479E
+Primary: #16a34a (Tailwind green-600)
 
 ## Tailwind
 

@@ -11,7 +11,7 @@
       </div>
     </section>
 
-    <main class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
+    <div class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
       <section class="space-y-8 text-gray-700 dark:text-gray-300 leading-relaxed">
         <div class="space-y-4">
           <p>
@@ -99,19 +99,15 @@
           </div>
         </div>
       </section>
-    </main>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
+usePageSeo({
   title: "Der Verein – Auf Brüderstein e.V.",
-  meta: [
-    {
-      name: "description",
-      content: "Informationen über den Verein Auf Brüderstein e.V. und seine Satzung.",
-    },
-  ],
-  link: [{ rel: "canonical", href: "https://bruederstein.de/der-verein" }],
+  description:
+    "Informationen über den Verein Auf Brüderstein e.V. und seine Satzung.",
+  path: "/der-verein",
 });
 </script>
