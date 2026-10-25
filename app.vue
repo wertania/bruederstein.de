@@ -1,18 +1,9 @@
-<script setup>
-import MenuHeader from "~/components/MenuHeader.vue";
-import Footer from "~/components/Footer.vue";
-import CookieBanner from "~/components/CookieBanner.vue";
-</script>
-
 <template>
-  <div class="min-h-screen bg-white dark:bg-background-dark">
-    <!-- Site Header Menu -->
+  <div class="flex min-h-screen flex-col">
     <MenuHeader />
-    <!-- Page Content -->
-    <main class="bg-white dark:bg-background-dark">
+    <main id="inhalt" class="flex-1">
       <NuxtPage />
     </main>
-    <!-- Site Footer -->
     <Footer />
   </div>
 </template>
