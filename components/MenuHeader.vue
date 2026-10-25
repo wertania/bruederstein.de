@@ -1,238 +1,117 @@
 <script setup>
-// Import the menu configuration from the content directory
 import menuConfig from "~/content/_menu.json";
 
-// State for mobile menu toggle
 const menuOpen = ref(false);
-
-// State for dark mode
 const isDarkMode = ref(false);
+const route = useRoute();
 
-// State for dropdown menu
-const activeDropdown = ref(null);
+// Close the mobile menu after navigating.
+watch(() => route.path, () => (menuOpen.value = false));
 
-// Function to toggle the mobile menu
-function toggleMenu() {
-  menuOpen.value = !menuOpen.value;
-}
-
-// Function to toggle dropdown
-function toggleDropdown(index) {
-  activeDropdown.value = activeDropdown.value === index ? null : index;
-}
-
-// Function to close dropdown when clicking outside
-function handleClickOutside(event) {
-  if (!event.target.closest(".dropdown-menu")) {
-    activeDropdown.value = null;
-  }
-}
-
-// Function to toggle dark mode
 function toggleDarkMode() {
-  if (typeof document !== "undefined") {
-    document.body.classList.toggle("dark");
-    isDarkMode.value = document.body.classList.contains("dark");
-    localStorage.setItem("darkMode", isDarkMode.value);
-  }
+  const root = document.documentElement;
+  root.classList.toggle("dark");
+  isDarkMode.value = root.classList.contains("dark");
+  try {
+    localStorage.setItem("darkMode", String(isDarkMode.value));
+  } catch {}
 }
 
-// Initialize dark mode based on user preference
 onMounted(() => {
-  if (typeof window !== "undefined") {
-    if (
-      localStorage.getItem("darkMode") === "true" ||
-      (!localStorage.getItem("darkMode") &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.body.classList.add("dark");
-      isDarkMode.value = true;
-    } else {
-      document.body.classList.remove("dark");
-      isDarkMode.value = false;
-    }
-  }
-  document.addEventListener("click", handleClickOutside);
-});
-
-onUnmounted(() => {
-  document.removeEventListener("click", handleClickOutside);
+  isDarkMode.value = document.documentElement.classList.contains("dark");
 });
 </script>
 
 <template>
-  <!-- Header Navigation Bar with Diagonal Design -->
-  <div class="relative w-full overflow-hidden" style="min-height: 140px;">
-    <!-- Diagonal Green Background -->
-    <div
-      class="absolute inset-0 bg-green-600"
-      style="clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);"
-    ></div>
-    
-    <!-- Navigation Content -->
-    <nav
-      class="relative flex flex-col sm:flex-row w-full justify-between items-center px-4 sm:px-6 py-4 z-10"
-    >
-      <!-- Logo and Text Section -->
-      <div
-        class="w-full sm:w-auto self-start sm:self-center flex flex-row sm:flex-none flex-no-wrap justify-between items-center"
-      >
-        <a
-          :href="menuConfig.logoUrl || '/'"
-          class="no-underline hover:opacity-80 transition-opacity flex flex-row items-center z-20"
+  <header
+    class="sticky top-0 z-40 border-b border-rule bg-paper/90 backdrop-blur supports-[backdrop-filter]:bg-paper/80"
+  >
+    <nav class="wrap flex items-center justify-between gap-6 py-3" aria-label="Hauptnavigation">
+      <NuxtLink :to="menuConfig.logoUrl || '/'" class="group flex items-center gap-3">
+        <img
+          :src="menuConfig.logoPathLight || '/logo.png'"
+          :alt="menuConfig.logoAlt || 'Logo'"
+          class="h-12 w-auto sm:h-14 dark:rounded-lg dark:bg-[#ece7db] dark:p-1"
+          width="64"
+          height="56"
+        />
+        <span class="leading-tight">
+          <span class="block font-serif text-lg font-semibold text-ink group-hover:text-forest sm:text-xl">
+            Auf Brüderstein
+          </span>
+          <span class="eyebrow block text-[0.62rem]">Grillplatz · e.V.</span>
+        </span>
+      </NuxtLink>
+
+      <div class="hidden items-center gap-8 md:flex">
+        <NuxtLink
+          v-for="item in menuConfig.menuItems"
+          :key="item.url"
+          :to="item.url"
+          class="border-b border-transparent py-1 font-sans text-[0.8rem] font-medium uppercase tracking-[0.14em] text-ink-soft transition-colors hover:text-forest"
+          exact-active-class="!border-gold !text-ink"
         >
-          <!-- Logo -->
-          <img
-            :src="menuConfig.logoPathLight || '/logo.png'"
-            :alt="menuConfig.logoAlt || 'Logo'"
-            class="h-20 sm:h-24 py-1"
-          />
-        </a>
-        <!-- Hamburger Button for Mobile -->
+          {{ item.text }}
+        </NuxtLink>
+        <NuxtLink
+          v-if="menuConfig.highlight"
+          :to="menuConfig.highlight.url"
+          class="btn-primary !px-4 !py-2 !text-xs"
+        >
+          {{ menuConfig.highlight.text }}
+        </NuxtLink>
         <button
-          id="menuBtn"
-          class="block sm:hidden w-8 h-8 relative focus:outline-none z-20"
+          id="darkModeToggle"
           type="button"
-          @click="toggleMenu"
-          :aria-label="menuOpen ? 'Hide Menu' : 'Show Menu'"
+          class="text-ink-faint transition-colors hover:text-gold"
+          :aria-label="isDarkMode ? 'Helles Farbschema' : 'Dunkles Farbschema'"
+          @click="toggleDarkMode"
         >
-          <!-- Hamburger icon lines -->
-          <span
-              :class="[
-              'absolute w-6 h-0.5 bg-white rounded transform transition-all duration-300 left-1 top-2',
-              menuOpen ? 'rotate-45 translate-y-[7px]' : '',
-            ]"
-          ></span>
-          <span
-              :class="[
-              'absolute w-6 h-0.5 bg-white rounded transform transition-all duration-300 left-1 top-4',
-              menuOpen ? 'opacity-0' : '',
-            ]"
-          ></span>
-          <span
-              :class="[
-              'absolute w-6 h-0.5 bg-white rounded transform transition-all duration-300 left-1 bottom-2',
-              menuOpen ? '-rotate-45 -translate-y-[7px]' : '',
-            ]"
-          ></span>
+          <Icon :name="isDarkMode ? 'heroicons:sun' : 'heroicons:moon'" class="h-5 w-5" />
         </button>
       </div>
-      <!-- Menu Items Section -->
-      <div
-        id="menu"
-        :class="[
-          'w-full sm:w-auto self-end sm:self-center sm:flex flex-col sm:flex-row items-center h-full py-4 sm:py-0',
-          menuOpen ? '' : 'hidden',
-          'sm:block',
-        ]"
-      >
-        <div
-          class="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8 items-center w-full sm:w-auto"
+
+      <div class="flex items-center gap-4 md:hidden">
+        <button
+          type="button"
+          class="text-ink-faint hover:text-gold"
+          :aria-label="isDarkMode ? 'Helles Farbschema' : 'Dunkles Farbschema'"
+          @click="toggleDarkMode"
         >
-          <!-- Render menu items -->
-          <template v-for="(item, idx) in menuConfig.menuItems" :key="idx">
-            <!-- Dropdown menu item -->
-            <div
-              v-if="item.subItems"
-              class="relative dropdown-menu w-full sm:w-auto"
-            >
-              <button
-                @click="toggleDropdown(idx)"
-                class="text-white font-bold hover:text-gray-200 text-lg w-full sm:w-auto text-center flex items-center justify-center sm:justify-start transition-colors"
-              >
-                {{ item.text }}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4 ml-1"
-                  :class="{ 'transform rotate-180': activeDropdown === idx }"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <!-- Dropdown content -->
-              <div
-                v-show="activeDropdown === idx"
-                class="sm:absolute sm:left-0 sm:mt-2 sm:w-48 sm:rounded-md sm:shadow-lg bg-white dark:bg-gray-800 sm:ring-1 sm:ring-gray-200 dark:sm:ring-gray-700 sm:z-50 w-full border border-gray-200 dark:border-gray-700"
-              >
-                <div class="py-1">
-                  <a
-                    v-for="(subItem, subIdx) in item.subItems"
-                    :key="subIdx"
-                    :href="subItem.url"
-                    class="block px-4 py-2 text-base text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 text-center sm:text-left"
-                  >
-                    {{ subItem.text }}
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- Regular menu item -->
-            <a
-              v-else
-              class="text-white font-bold hover:text-gray-200 text-lg w-full sm:w-auto text-center transition-colors"
-              :href="item.url"
-            >
-              {{ item.text }}
-            </a>
-          </template>
-          <!-- Highlight Button -->
-          <a
-            v-if="menuConfig.highlight"
-            :href="menuConfig.highlight.url"
-            class="ml-4 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-md"
-          >
-            {{ menuConfig.highlight.text }}
-          </a>
-          <!-- Dark Mode Toggle Button -->
-          <button
-            id="darkModeToggle"
-            class="w-8 h-8 flex items-center justify-center text-white hover:text-gray-200 transition-colors"
-            @click="toggleDarkMode"
-            aria-label="Toggle Dark Mode"
-          >
-            <!-- Moon icon for dark mode -->
-            <svg
-              v-if="isDarkMode"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
-            <!-- Sun icon for light mode -->
-            <svg
-              v-else
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          </button>
-        </div>
+          <Icon :name="isDarkMode ? 'heroicons:sun' : 'heroicons:moon'" class="h-5 w-5" />
+        </button>
+        <button
+          id="menuBtn"
+          type="button"
+          class="text-ink"
+          :aria-expanded="menuOpen"
+          :aria-label="menuOpen ? 'Menü schließen' : 'Menü öffnen'"
+          @click="menuOpen = !menuOpen"
+        >
+          <Icon :name="menuOpen ? 'heroicons:x-mark' : 'heroicons:bars-3'" class="h-7 w-7" />
+        </button>
       </div>
     </nav>
-  </div>
+
+    <div v-show="menuOpen" class="border-t border-rule bg-paper md:hidden">
+      <div class="wrap flex flex-col py-4">
+        <NuxtLink
+          v-for="item in menuConfig.menuItems"
+          :key="item.url"
+          :to="item.url"
+          class="border-b border-rule py-3 font-sans text-sm font-medium uppercase tracking-[0.14em] text-ink-soft"
+          exact-active-class="!text-forest"
+        >
+          {{ item.text }}
+        </NuxtLink>
+        <NuxtLink
+          v-if="menuConfig.highlight"
+          :to="menuConfig.highlight.url"
+          class="btn-primary mt-5"
+        >
+          {{ menuConfig.highlight.text }}
+        </NuxtLink>
+      </div>
+    </div>
+  </header>
 </template>

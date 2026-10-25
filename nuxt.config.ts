@@ -5,11 +5,12 @@ export default defineNuxtConfig({
   nitro: {
     preset: "static",
   },
-  modules: [
-    "@nuxtjs/sitemap",
-    "@nuxtjs/tailwindcss",
-    "@nuxt/icon",
-    "@nuxt/fonts",
+  modules: ["@nuxtjs/sitemap", "@nuxtjs/tailwindcss", "@nuxt/icon"],
+  css: [
+    "@fontsource-variable/eb-garamond",
+    "@fontsource-variable/eb-garamond/wght-italic.css",
+    "@fontsource-variable/inter",
+    "@fontsource/pinyon-script",
   ],
   tailwindcss: {
     cssPath: ["~/assets/css/tailwind.css", { injectPosition: "first" }],
@@ -23,7 +24,16 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "de" },
+      meta: [{ name: "theme-color", content: "#2e4a3b" }],
       link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+      script: [
+        {
+          // Apply the saved or preferred colour scheme before the first paint.
+          innerHTML:
+            "try{var d=localStorage.getItem('darkMode');if(d==='true'||(d===null&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}",
+          tagPosition: "head",
+        },
+      ],
     },
   },
   site: {

@@ -1,20 +1,11 @@
 <template>
   <div>
-    <!-- Hero Section -->
-    <section class="py-16 sm:py-24">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-3xl text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            Impressum
-          </h1>
-        </div>
-      </div>
-    </section>
+    <PageHeader eyebrow="Rechtliches" title="Impressum" />
 
-    <div class="mx-auto max-w-4xl px-6 lg:px-8 py-16">
-      <section class="space-y-8 text-gray-700 dark:text-gray-300 leading-relaxed">
-        <div class="space-y-2">
-          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+    <div class="wrap">
+      <article class="prose-page">
+        <div>
+          <h2>
             Auf Brüderstein e.V.
           </h2>
           <p>
@@ -23,8 +14,8 @@
           </p>
         </div>
 
-        <div class="space-y-2">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h3>
             Geschäftsführender Vorstand:
           </h3>
           <p>
@@ -34,20 +25,20 @@
           </p>
         </div>
 
-        <div class="space-y-2">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h3>
             Kontakt:
           </h3>
           <p>
-            E-Mail: <a href="mailto:info@bruederstein.de" class="text-green-600 dark:text-green-400 hover:underline">info(at)bruederstein.de</a>
+            E-Mail: <a href="mailto:info@bruederstein.de">info(at)bruederstein.de</a>
           </p>
-          <p class="mt-2">
+          <p>
             (Die Vereinszwecke und Verordnungen sind der Satzung zu entnehmen)
           </p>
         </div>
 
-        <div class="space-y-2">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h3>
             Fotos und Unterlagen:
           </h3>
           <p>
@@ -55,11 +46,11 @@
           </p>
         </div>
 
-        <div class="space-y-2">
-          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h2>
             Haftungsauschluss / Disclaimer
           </h2>
-          <p class="text-sm text-gray-600 dark:text-gray-400 italic">
+          <p>
             Quelle: eRecht24.de – Internetrecht von Rechtsanwalt Sören Siebert
           </p>
           <p>
@@ -67,8 +58,8 @@
           </p>
         </div>
 
-        <div class="space-y-2">
-          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h2>
             Haftung für Links
           </h2>
           <p>
@@ -76,8 +67,8 @@
           </p>
         </div>
 
-        <div class="space-y-2">
-          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h2>
             Urheberrecht
           </h2>
           <p>
@@ -85,21 +76,21 @@
           </p>
         </div>
 
-        <div class="space-y-2">
-          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h2>
             Datenschutz
           </h2>
           <p>
             Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.
           </p>
-          <p class="mt-4">
+          <p>
             Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
           </p>
-          <p class="mt-4">
+          <p>
             Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
           </p>
         </div>
-      </section>
+      </article>
     </div>
   </div>
 </template>

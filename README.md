@@ -18,14 +18,24 @@ bun run generate   # statische Seite nach .output/public
 
 ```
 pages/              eine Datei pro Seite
-components/         Kopfzeile (MenuHeader) und Fußzeile (Footer)
+components/         Kopfzeile, Fußzeile und Seitenkopf (PageHeader)
 composables/        usePageSeo: Titel, Beschreibung, Open Graph, Canonical
 content/_menu.json  Menüeinträge und Logo
 content/_footer.json  Fußzeile: Navigation, Vereinsname, E-Mail
 public/             Bilder, Logo, Favicon, robots.txt
 ```
 
-Hauptfarbe ist Grün (`#16a34a`, Tailwind `green-600`).
+## Gestaltung
+
+Angelehnt an strinz.de: warmes Papier, tiefes Waldgrün (`#2e4a3b`), Gold als
+Akzent. Schriften: EB Garamond für den Text, Inter für Navigation und
+Auszeichnungen, Pinyon Script für den Titel. Alle Schriften liegen selbst
+gehostet im Build (Fontsource), es gibt keine Anfragen an Google Fonts.
+
+Die Farben sind CSS-Variablen in `assets/css/tailwind.css` (hell und dunkel),
+`tailwind.config.js` macht sie als Klassen verfügbar: `bg-paper`, `text-ink`,
+`text-forest`, `text-gold` usw. Wiederkehrende Bausteine (`.btn-primary`,
+`.card`, `.eyebrow`, `.ornament`, `.prose-page`) stehen ebenfalls dort.
 
 ## Deployment
 
