@@ -1,7 +1,7 @@
 # Builds the static site and serves it with nginx.
 # Nothing runs at request time: the image contains static files only.
 # Bun installs the packages; the Nuxt build itself runs on Node.
-FROM node:24-alpine AS builder
+FROM node:26-alpine AS builder
 COPY --from=oven/bun:1-alpine /usr/local/bin/bun /usr/local/bin/bun
 WORKDIR /app
 
